@@ -44,6 +44,7 @@ function App() {
 		setSelectedFriend((selectedFriend) =>
 			selectedFriend?.id === friend.id ? null : friend
 		);
+		setShowFriendForm(false);
 	};
 
 	useEffect(() => {
