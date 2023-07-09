@@ -1,14 +1,14 @@
 import React from 'react';
 
-function Friend({ friendData }) {
+function Friend({ friend }) {
 	return (
 		<li>
 			<div>
-				<img alt="Some person's face" src={friendData.image} />
+				<img alt="Some person's face" src={friend.image} />
 				<div>
-					<h2>{friendData.name}</h2>
+					<h2>{friend.name}</h2>
 					<p>
-						You owe {friendData.name} ${friendData.balance}
+						You owe {friend.name} ${friend.balance}
 					</p>
 				</div>
 				<button className='button'>Select</button>
