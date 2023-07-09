@@ -41,7 +41,9 @@ function App() {
 	};
 
 	const handleSelectFriend = (friend) => {
-		setSelectedFriend(friend);
+		setSelectedFriend((selectedFriend) =>
+			selectedFriend.id === friend.id ? null : friend
+		);
 	};
 
 	useEffect(() => {
@@ -51,7 +53,11 @@ function App() {
 	return (
 		<div className='app'>
 			<div className='sidebar'>
-				<FriendList friendsDb={friendsDb} onSelect={handleSelectFriend} />
+				<FriendList
+					friendsDb={friendsDb}
+					onSelect={handleSelectFriend}
+					selectedFriend={selectedFriend}
+				/>
 
 				{showFriendForm && <NewFriendForm onAddFriend={handleAddFriend} />}
 
@@ -60,7 +66,7 @@ function App() {
 				</Button>
 			</div>
 
-			{!selectedFriend && <BillDataSplit />}
+			{selectedFriend && <BillDataSplit friend={selectedFriend} />}
 		</div>
 	);
 }
