@@ -36,6 +36,7 @@ function App() {
 
 	const handleAddFriend = (friend) => {
 		setFriendsDb((friendsDb) => [...friendsDb, friend]);
+		setShowFriendForm(false);
 	};
 
 	useEffect(() => {
