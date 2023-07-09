@@ -55,6 +55,7 @@ function App() {
 					: friend
 			)
 		);
+		setSelectedFriend(null);
 	};
 
 	useEffect(() => {
