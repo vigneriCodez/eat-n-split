@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from './Button';
 
-function Friend({ friend }) {
+function Friend({ friend, onSelect }) {
 	return (
 		<li>
 			<img alt="Some person's face" src={friend.image} />
@@ -18,7 +18,7 @@ function Friend({ friend }) {
 				</p>
 			)}
 			{friend.balance === 0 && <p>You and {friend.name} are even</p>}
-			<Button>Select</Button>
+			<Button onClick={() => onSelect(friend)}>Select</Button>
 		</li>
 	);
 }

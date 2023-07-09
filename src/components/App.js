@@ -29,6 +29,7 @@ const initialFriends = [
 function App() {
 	const [showFriendForm, setShowFriendForm] = useState(false);
 	const [friendsDb, setFriendsDb] = useState([]);
+	const [selectedFriend, setSelectedFriend] = useState(null);
 
 	const handleFriendFormToggle = () => {
 		setShowFriendForm((state) => !state);
@@ -39,6 +40,10 @@ function App() {
 		setShowFriendForm(false);
 	};
 
+	const handleSelectFriend = (friend) => {
+		setSelectedFriend(friend);
+	};
+
 	useEffect(() => {
 		setFriendsDb([...initialFriends]);
 	}, []);
@@ -46,13 +51,16 @@ function App() {
 	return (
 		<div className='app'>
 			<div className='sidebar'>
-				<FriendList friendsDb={friendsDb} />
+				<FriendList friendsDb={friendsDb} onSelect={handleSelectFriend} />
+
 				{showFriendForm && <NewFriendForm onAddFriend={handleAddFriend} />}
+
 				<Button onClick={handleFriendFormToggle}>
 					{showFriendForm ? 'Close' : 'Add Friend'}
 				</Button>
 			</div>
-			<BillDataSplit />
+
+			{!selectedFriend && <BillDataSplit />}
 		</div>
 	);
 }
