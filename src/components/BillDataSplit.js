@@ -2,13 +2,22 @@ import React, { useState } from 'react';
 
 import Button from './Button';
 
-function BillDataSplit({ friend }) {
+function BillDataSplit({ friend, onSplitBill }) {
 	const [bill, setBill] = useState('');
 	const [userExpense, setUserExpense] = useState('');
 	const [payee, setPayee] = useState('user');
 
+	const friendAmt = bill ? bill - userExpense : '';
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		if (!bill || !userExpense) return;
+
+		onSplitBill(payee === 'user' ? friendAmt : -userExpense);
+
+		setBill('');
+		setUserExpense('');
+		setPayee('user');
 	};
 
 	return (
@@ -30,11 +39,15 @@ function BillDataSplit({ friend }) {
 				min='1'
 				step='any'
 				value={userExpense}
-				onChange={(e) => setUserExpense(Number(e.target.value))}
+				onChange={(e) =>
+					setUserExpense(
+						Number(e.target.value) > bill ? userExpense : Number(e.target.value)
+					)
+				}
 			/>
 
 			<label>{friend.name}'s expense</label>
-			<input type='number' disabled />
+			<input type='number' disabled value={friendAmt} />
 
 			<label>Who is paying?</label>
 			<select

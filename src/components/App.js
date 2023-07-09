@@ -47,6 +47,16 @@ function App() {
 		setShowFriendForm(false);
 	};
 
+	const handleSplitBill = (value) => {
+		setFriendsDb((friends) =>
+			friends.map((friend) =>
+				friend.id === selectedFriend.id
+					? { ...friend, balance: friend.balance + value }
+					: friend
+			)
+		);
+	};
+
 	useEffect(() => {
 		setFriendsDb([...initialFriends]);
 	}, []);
@@ -67,7 +77,9 @@ function App() {
 				</Button>
 			</div>
 
-			{selectedFriend && <BillDataSplit friend={selectedFriend} />}
+			{selectedFriend && (
+				<BillDataSplit friend={selectedFriend} onSplitBill={handleSplitBill} />
+			)}
 		</div>
 	);
 }
