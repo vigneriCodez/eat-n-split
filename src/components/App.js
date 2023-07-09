@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 import FriendList from './FriendList';
+import NewFriendForm from './NewFriendForm';
+import Button from './Button';
+import BillDataSplit from './BillDataSplit';
 
 const initialFriends = [
 	{
@@ -34,7 +37,10 @@ function App() {
 		<div className='app'>
 			<div className='sidebar'>
 				<FriendList friendsDb={friendsDb} />
+				<NewFriendForm />
+				<Button>Add Friend</Button>
 			</div>
+			<BillDataSplit />
 		</div>
 	);
 }
