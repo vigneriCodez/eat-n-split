@@ -31,9 +31,10 @@ function App() {
 	}, []);
 
 	return (
-		<div className='App'>
-			<h1>EAT IT AND SPLIT IT</h1>
-			<FriendList friendsDb={friendsDb} />
+		<div className='app'>
+			<div className='sidebar'>
+				<FriendList friendsDb={friendsDb} />
+			</div>
 		</div>
 	);
 }
