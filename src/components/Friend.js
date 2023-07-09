@@ -3,7 +3,7 @@ import React from 'react';
 import Button from './Button';
 
 function Friend({ friend, onSelect, selectedFriend }) {
-	const isSelected = selectedFriend.id === friend.id;
+	const isSelected = selectedFriend?.id === friend.id;
 
 	return (
 		<li className={isSelected ? 'selected' : ''}>
