@@ -79,7 +79,11 @@ function App() {
 			</div>
 
 			{selectedFriend && (
-				<BillDataSplit friend={selectedFriend} onSplitBill={handleSplitBill} />
+				<BillDataSplit
+					key={selectedFriend.id}
+					friend={selectedFriend}
+					onSplitBill={handleSplitBill}
+				/>
 			)}
 		</div>
 	);
